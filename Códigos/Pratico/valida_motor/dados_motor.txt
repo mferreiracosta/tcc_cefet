@@ -1,0 +1,17 @@
+Configurações PWM Motor A Pin 8
+	- Tensão da Fonte: 6V
+
+	- PWM 255 (Máximo)
+	- Corrente a vazio: ~0.073A
+
+	- PWM 58 (Mínimo)
+	- Corrente a vazio: ~0.024A
+
+Configurações PWM Motor B Pin 8
+	- Tensão da Fonte: 6V
+
+	- PWM 255 (Máximo)
+	- Corrente a vazio: ~0.073A
+
+	- PWM 58 (Mínimo)
+	- Corrente a vazio: ~0.024A
