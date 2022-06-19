@@ -1,0 +1,32 @@
+\chapter{Considerações Finais}
+
+Neste capítulo são apresentadas as considerações decorrentes dos resultados obtidos no desenvolvimento deste trabalho e a proposta de continuidade para o estudo.
+
+\section{Conclusões}
+
+O objetivo deste trabalho foi desenvolver uma planta física de controle como parte da disciplina de trabalho de conclusão de curso, utilizando técnica de controle ótimo para sistema não linear. Além disso, utilizou-se de vários outros conceitos abordados ao longo do curso, tais como desenho e cálculos mecânicos, eletrônica e circuitos elétricos e programação para computadores.
+
+Com relação ao tema abordado, conclui-se que é de grande importância na academia e que possui uma variedade de pesquisas já realizadas em relação a este sistema. A técnica de modelagem utilizada é bastante usual na literatura.
+
+Em relação as técnicas de controle ótimo, há vários estudos sobre, o que assegurou uma maior certeza na escolha do controlador implementado. O projeto do controlador LQG por meio de ajuda de \textit{software}, como o MATLAB, mostrou ser fácil de se implementar em simulação e na prática. Em simulação, os resultados obtidos com relação ao sistema não linear, foi bastante eficaz mesmo lidando com distúrbios e ruídos aplicados.
+
+Ao fim da montagem da estrutura mecânica e do circuito eletrônico, realizou-se a validação do sensor e dos motores. Observou-se a sensibilidade para ruído do do sinal real vindo do sensor e a robustez do sinal filtrado. Em relação aos motores, obteve-se os máximos e mínimos de PWM e sentido de giro de cada motor.
+Ao aplicar o controlador, notou-se a diferença de velocidade em cada roda, fazendo a estrutura girar. Esse acontecimento era esperado uma vez que não há controle dos motores, apenas da posição angular da estrutura. O intuito ao aplicar o LQG era o controle na vertical da estrutura....
+
+Com o presente trabalho foi possível desenvolver habilidades extras da área de controle que não são abordadas na grade curricular do curso. A experiência adquirida nas disciplinas teóricas bem como as de laboratórios foram de
+suma importância para atingir os resultados alcançados. Contudo, como já citado, este trabalho é multidisciplinar e que necessitou de utilizar de vários fundamentos adquiridos ao longo do curso.
+
+
+\section{Propostas de Trabalhos Futuros}
+
+A partir da experiência adquirida durante o desenvolvimento deste trabalho, foram elencados os seguintes tópicos como possíveis continuações do estudo:
+
+\begin{itemize}
+    \item Identificação de parâmetros aqui descartados, afim de simplificar o modelo, como a fricção e averiguar a necessidade de adição;
+    \item Identificação mais robusta dos parâmetros mecânicos e elétricos dos motores utilizados;
+    \item Implementação do uso dos \textit{encoders} dos motores, o que acarretaria em uma adição de dois novos estados na modelagem, posição e velocidade linear;
+    \item Um outra abordagem é da utilização de motores de passo ao invés de motores de corrente contínua, uma vez que os motores passo tem um ótimo controle de posição e são muito precisos.
+    \item Implementação de novas técnicas de controle para efeito de comparação com a abordada neste trabalho;
+    \item Utilização de técnicas de controle MIMO (múltiplas entradas e múltiplas saídas), como a realização de um controlador em cascata para o controle da posição linear e da vertical.
+
+\end{itemize}

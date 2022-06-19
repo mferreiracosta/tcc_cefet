@@ -1,0 +1,70 @@
+\chapter{Códigos}\label{Apendice:CodigoMatlab}
+%\pagenumbering{arabic}
+
+\begin{minted}[breaklines=true]{C}
+
+Link para códigos e modelagem completa do trabalho: https://github.com/mferreiracosta/tcc_cefet
+
+%% PROGRAMA PÊNDULO INVERTIDO - TCC 2 - 2022.1
+% Autor: Matheus Ferreira Costa
+% Orientador: Luís Filipe 
+
+clc; clear all; close all
+
+%% Definição dos Parâmetros
+syms g M m L r R kt
+
+g = 9.80665;
+M = 0.066;    
+m = 0.788;
+L = 0.18;    r = 0.033;
+R = 0.92;    kt = 0.54;
+
+den = 2*M*r^2 + m*(r^2 + L^2 + 2*L*r);
+
+%% Calculando as matrizes do sistema A, B, C e D
+
+A = [      0      1;
+     (m*g*L)/den  0];
+B = [0; kt/(R*den)];
+C = [1 0];
+D = [0];
+
+sys = ss(A,B,C,D);
+
+%% Calculando o rank de controlabilidade e observabilidade do sistema
+Sc = ctrb(sys);
+So = obsv(sys);
+
+rank_ctrb = rank(Sc);
+rank_obsv = rank(So);
+
+%% Escolhendo as matrizes Q e R para calcular o controlador LQR
+Q = [1   0;            
+     0   1];
+R = 1;
+
+%% Construção do Sistema em Espaço de Estados no Tempo Discreto
+Ts = 0.05;
+sysd = c2d(sys,Ts);
+
+% Matrizes discretas: Ad e Bd, Cd = C e Dd = D
+Ad = sysd.a;
+Bd = sysd.b;
+
+%% Construção do controlador LQR no Tempo Discreto
+[Krd,S,e] = dlqr(Ad,Bd,Q,R);
+
+%% Construção do LQE - Filtro de Kalman no Tempo Discreto
+Qo = 1;                  % matriz de covariância do distúrbio           
+Ro = 1;                  % (escalar) covariância do ruído de medição  
+
+% Construção do LQE - Filtro de Kalman
+[kalmf,Lkalm,P] = kalman(sysd,Qo,Ro);
+
+Ld = dlqr(Ad',C',Qo,Ro);
+Ld = Ld';
+
+sysKFd = ss(Ad-Ld*C,[Bd Ld],eye(2),zeros(2,2));
+
+\end{minted}

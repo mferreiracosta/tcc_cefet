@@ -1,0 +1,38 @@
+%================================= Resumo e Abstract ========================================
+\newpage
+
+\chapter*{Resumo}
+
+\vspace*{0.5cm}
+
+\begin{quotation}
+\noindent 
+O sistema robotizado de pêndulo invertido se tornou largamente conhecido através do Segway nas últimas décadas, inspirando diversas pesquisas por sistemas de controle eficazes e robustos. Paralelamente, a versão autônoma do veículo também tem atraído a atenção da comunidade acadêmica por se tratar de um sistema não linear e instável em malha aberta. Dessa maneira, este trabalho teve por objetivo a construção e o controle de um sistema do tipo pêndulo invertido sobre duas rodas. Para isso, foram necessário vários estudos a respeito de controladores que consigam trabalhar em sistemas não lineares. Uma das técnicas de controle amplamente utilizadas em sistemas não lineares e com múltiplos estados é o LQG, que advém da teoria do controle ótimo. Este controlador, diferente de muitos que há na literatura, é bastante robusto o que faz com que o mesmo lide bem com ruídos e distúrbios. Após análise e desenvolvimento do projeto CAD, realizou-se a construção física da planta. De forma a simplificar os cálculos, descartou parâmetros como fricção e ruídos da modelagem matemática. As técnicas utilizadas na modelagem nos fornece inicialmente um modelo não linear contínuo no tempo, sendo necessário a realização da linearização utilizando equações Jacobianas e obtendo assim o espaço de estados do sistema. Como a placa que comandará a planta é um microcontrolador, realizou-se a discretização do sistema. Após isso, obteve-se o vetor de ganhos ótimos do LQR e do estimador. As primeiras validações se deu em ambiente simulado aplicando os ganhos do controlador na equação não linear contínua obtida na etapa da modelagem. Com mais essa etapa finalizada, realizou-se testes. Primeiramente, foi desenvolvido um código no Arduino em conjunto com Processing e VS Code, sendo possível validar os sinais do sensor e os motores. Após as validações, desenvolveu-se um código completo no Arduino para controle da planta.
+\vspace*{0.5cm}
+
+\noindent Palavras-chave: Segway. Pêndulo Invertido Sobre Duas Rodas. Controle Ótimo. Microcontrolador. LQG.
+
+\end{quotation}
+
+
+
+%===================================================================
+% A parte abaixo não deve estar presente em TCC I, somente em TCC II.
+%===================================================================
+ \newpage
+
+ \chapter*{Abstract}
+
+ \vspace*{0.5cm}
+
+ \begin{quotation}
+
+
+ \noindent The inverted pendulum robotic system has become widely known through the Segway in recent decades, inspiring several researches for effective and robust control systems. At the same time, the autonomous version of the vehicle has also attracted the attention of the academic community because it is a non-linear and unstable open-loop system. Thus, this work aimed to build and control an inverted pendulum-type system on two wheels. For this, several studies were needed about controllers that can work in non-linear systems. One of the control techniques widely used in nonlinear and multi-state systems is LQG, which comes from the theory of optimal control. This controller, unlike many in the literature, is quite robust, which makes it handle noise and disturbances well. After analysis and development of the CAD project, the physical construction of the plant was carried out. In order to simplify the calculations, parameters such as friction and noise were excluded from the mathematical modeling. The techniques used in the modeling initially provide us with a nonlinear model continuous in time, being necessary to carry out the linearization using Jacobian equations and thus obtaining the state space of the system. As the board that will control the plant is a microcontroller, the system was discretized. After that, the vector of optimal gains of the LQR and the estimator was obtained. The first validations took place in a simulated environment by applying the controller gains in the continuous nonlinear equation obtained in the modeling stage. With this step completed, tests were carried out. First, a code was developed in Arduino together with Processing and VS Code, being possible to validate the sensor signals and the motors. After the validations, a complete code was developed in Arduino to control the plant.
+ \vspace*{0.5cm}
+
+ \noindent Key-words: Segway. Two-Wheeled Inverted Pendulum. Microcontroller. Optimal Control. LQG.
+ \newpage% verso em branco
+ \end{quotation}
+%
+%===================================================================

@@ -1,0 +1,84 @@
+\documentclass[12pt,oneside,final]{book}
+\input{macros} % Arquivo com todas as macros
+
+%============================================
+% Defina seus dados:
+%============================================
+\newcommand\autor{Matheus Ferreira Costa}
+\newcommand\titulo{Construção e controle de um sistema do tipo pêndulo invertido \\ sobre duas Rodas}
+\newcommand\orientador{Prof. Dr. Luís Filipe Pereira Silva}
+%\newcommand\coorientador{Prof. Dr. Juliano de Barros Veloso e Lima}
+\newcommand\cidade{Divinópolis, MG}
+\newcommand\ano{$2022$}
+%============================================
+
+
+\begin{document}
+
+%\usepackage{comment}
+
+%========= Paginas iniciais ==============
+% Muda numeração para usar algarismos romanos
+\pagenumbering{roman}
+\pagestyle{fancy}
+%=================================================
+% Use o comando abaixo para TCC II
+    \input{capa}
+%=================================================
+
+% Resumo e abstract (abstract somente para TCC II)
+    \input{res_abstract}
+
+\tableofcontents
+
+%========= lista de tabelas e figuras ==============
+
+\listoffigures
+    \addcontentsline{toc}{chapter}{Lista de Figuras}
+
+
+\listoftables
+    \addcontentsline{toc}{chapter}{Lista de Tabelas}
+
+
+\input{acro_notacao.tex} % arquivo com *todas* as notacoes e acronimos usados
+    
+
+%=================================================
+\newpage
+
+
+%\thispagestyle{empty}
+
+% Muda espaçamento para 1,3 vezes maior que o padrão
+\baselineskip 1.3\baselineskip
+
+% Muda numeração para usar algarismos arábicos
+\pagenumbering{arabic}
+\pagestyle{fancy}
+% Carrega os capítulos
+\include{1_Introducao}
+\include{2_Fundamentos}
+\include{3_SistemaMecatronico}
+\include{4_Modelagem}
+\include{5_Resultados}
+\include{6_Consideracoes}
+
+% Apêndices
+%\appendix
+    %\include{AP_CodigosMatlab}
+    %\include{AP_ResolucaoModelagem}
+
+%========= Referências ====================
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Referências}
+\renewcommand{\bibname}{Referências}
+\markboth{Referências}{Referências}
+
+% Define o estilo da citação e da bibliografia
+\bibliographystyle{abnt}
+% Define os arquivos onde estão cadastradas as referências bibliográficas
+\bibliography{meubib}
+
+\end{document}
