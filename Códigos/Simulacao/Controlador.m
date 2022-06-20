@@ -67,7 +67,7 @@ R = 1;
 
 %% Construção do Sistema em Espaço de Estados no Tempo Discreto
 
-Ts = 0.01;
+Ts = 0.002;
 sysd = c2d(sys,Ts);
 
 % Matrizes discretas: Ad e Bd, Cd = C e Dd = D
