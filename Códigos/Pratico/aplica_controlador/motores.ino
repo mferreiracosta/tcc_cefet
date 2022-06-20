@@ -3,38 +3,40 @@
 //OUT_MIN_A = 80
 //OUT_MIN_B = 65
 
-const int IN1 = 7;
-const int IN2 = 8;
-const int IN3 = 10;
+const int IN1 = 5;
+const int IN2 = 6;
+const int IN3 = 9;
 const int IN4 = 11;
-const int EN_MOTOR_A = 6;
-const int EN_MOTOR_B = 9;
+
+double pwm = 0;
 
 void init_motores(){
-  pinMode(EN_MOTOR_A, OUTPUT);
   pinMode(IN1, OUTPUT);
   pinMode(IN2, OUTPUT);
-  pinMode(EN_MOTOR_B, OUTPUT);
   pinMode(IN3, OUTPUT);
   pinMode(IN4, OUTPUT);
 }
 
 void PWMControleMotores(double comando){
-
+  
   if (comando < 0){
-    analogWrite(EN_MOTOR_A, abs(comando));
-    digitalWrite(IN1, 0);     
-    digitalWrite(IN2, 1);     // Controlando o Motor A para F.
-    analogWrite(EN_MOTOR_B, abs(comando));
-    digitalWrite(IN3, 0);     
-    digitalWrite(IN4, 1);     // Controlando o Motor B para F.
+    
+    pwm = map(comando, 0, -200, -80, -200);
+    Serial.print(pwm); Serial.print("\t");
+    
+    analogWrite(IN1, 0);     
+    analogWrite(IN2, abs(pwm));     // Controlando o Motor A para F.
+    analogWrite(IN3, 0);     
+    analogWrite(IN4, abs(pwm));     // Controlando o Motor B para F.
   }
   else {
-    analogWrite(EN_MOTOR_A, abs(comando));
-    digitalWrite(IN1, 1);     // Controlando o Motor A para T.
-    digitalWrite(IN2, 0);     
-    analogWrite(EN_MOTOR_B, abs(comando));
-    digitalWrite(IN3, 1);     // Controlando o Motor B para T.
-    digitalWrite(IN4, 0);     
+    
+    pwm = map(comando, 0, 200, 80, 200);
+    Serial.print(pwm); Serial.print("\t");
+    
+    analogWrite(IN1, abs(pwm));     // Controlando o Motor A para T.
+    analogWrite(IN2, 0);     
+    analogWrite(IN3, abs(pwm));     // Controlando o Motor B para T.
+    analogWrite(IN4, 0);     
   }
 }

@@ -1,5 +1,5 @@
 
-double K[] = {3.2023, 1.1508};
+double K[] = {3.2535, 1.1798};
 double voltage = 0;
 double output = 0;
 
@@ -8,6 +8,9 @@ int OUTMIN = -200;
 
 double Compute(double angle, double angleRate){
 
+  angle = angle / RAD_TO_DEG;          // Transformando de graus para rad
+  angleRate = angleRate / RAD_TO_DEG;  // Transformando de graus para rad/s
+
   voltage = (K[0] * angle) + (K[1] * angleRate);
 
   output = voltage * (255/7.4);
@@ -15,7 +18,7 @@ double Compute(double angle, double angleRate){
   if (output > OUTMAX){
     output = OUTMAX;
   } 
-  else {
+  else if (output < OUTMIN) {
     output = OUTMIN;
   }
 

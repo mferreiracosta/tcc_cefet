@@ -10,14 +10,14 @@
 
 Kalman KalmanX, KalmanY;
 
-float accX, accY, accZ;
-float gyroX, gyroY, gyroZ;
+double accX, accY, accZ;
+double gyroX, gyroY, gyroZ;
 
-float KalAngleX, KalAngleY;
-float KalAngleYrate, KalAngleYprev; // angulo anterior e velocidade angular
-float gyroXrate, gyroYrate;
+double KalAngleX, KalAngleY;
+double KalAngleYrate, KalAngleYprev; // angulo anterior e velocidade angular
+double gyroXrate, gyroYrate;
 
-const float dT = 10e-3;
+const double dT = 2e-3;
 
 int acc_offset[]  = {-585, 2185, 1495};
 int gyro_offset[] = {24, 44, 7};
@@ -71,7 +71,7 @@ void setup() {
 
   timer = micros();
 
-  //init_motores();
+  init_motores();
 
 }
 
@@ -90,11 +90,11 @@ void loop() {
   /******************************** Filtro de Kalman ***********************************/
 
   /* Calculo do Delta Time */
-  float dt = (float)(micros() - timer) / 1000000;
+  double dt = (double)(micros() - timer) / 1000000;
   timer = micros();
 
-  float roll  = atan(accY/sqrt(accX * accX + accZ * accZ)) * RAD_TO_DEG;
-  float pitch = atan(accX/sqrt(accY * accY + accZ * accZ)) * RAD_TO_DEG;
+  double roll  = atan(accY/sqrt(accX * accX + accZ * accZ)) * RAD_TO_DEG;
+  double pitch = atan(accX/sqrt(accY * accY + accZ * accZ)) * RAD_TO_DEG;
 
   /* Convertendo de Rad/segundo para Graus/segundo. Calculo da taxa angula baseado no Giroscópio */
   gyroXrate = gyroX / 131.0;
@@ -108,15 +108,16 @@ void loop() {
   KalAngleYrate = (KalAngleY - KalAngleYprev) / dT;   // velocidade angular em relação a Y
   KalAngleYprev = KalAngleY;
 
-  /* Mensagens de debug para verificação dos resultados obtidos com o Filtro de Kalman */
-  Serial.print(KalAngleY); Serial.print("\n");
-  Serial.print(pitch); Serial.print("\t");
-
   /* Obtendo a resposta do sinal u do controlador LQR */
-  //float res = Compute(KalAngleY, KalAngleYrate);
+  double res = Compute(KalAngleY, KalAngleYrate);
 
   /* Enviando a resposta obtida do controlador para os motores */
-  //PWMControleMotores(res);
+  PWMControleMotores(res);
+  
+  /* Mensagens de debug para verificação dos resultados obtidos com o Filtro de Kalman */
+  Serial.print(KalAngleY); Serial.print("\n");
+  //Serial.print(res); Serial.print("\t");
+  //Serial.print(pitch); Serial.print("\t");
   
   delay(2);
 }
