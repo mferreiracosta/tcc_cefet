@@ -5,7 +5,7 @@ PrintWriter output;
 void setup() {
   String portName = "COM5";
   mySerial = new Serial(this, portName, 115200);
-  output = createWriter("data.txt");
+  output = createWriter("dadosControlador.txt");
 }
 
 void draw() {
@@ -15,6 +15,7 @@ void draw() {
        output.println(value);
        output.flush();
      }
+     delay(2);
   }
 }
 
