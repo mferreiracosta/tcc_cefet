@@ -1,0 +1,69 @@
+ESP32
+
+Datasheet:
+
+ML: https://produto.mercadolivre.com.br/MLB-1121387812-esp32-wifi-bluetooth-esp32s-esp-wroom-32-_JM?quantity=1
+Preço s/Juros: R$ 44,00
+FRETE: R$ 18,90
+
+
+
+Bateria
+
+Datasheet LIPO: https://www.4-max.co.uk/pdf/What%20the%20numbers%20mean%20with%20regards%20to%20LiPo%20cells.pdf
+Video WR Kits - Consumo bateria: https://www.youtube.com/watch?v=T9EAIJvnV7k
+Explicação detalhada para dimensionar a bateria: http://aeromodelismoiniciante.blogspot.com/2011/01/bateria.html
+Explicação Baterias LIPO e-voo: http://www.e-voo.com/viewtopic.php?t=110680
+
+Bateria 2200mAh no ML: https://produto.mercadolivre.com.br/MLB-699859307-lipo-bateria-2200-mah-3s-25c-turnigy-aero-drone-heli-_JM?quantity=1
+
+https://www.robocore.net/loja/baterias/bateria-lipo-3s-2200mah-30c
+
+
+MOTOR 6V com encoder e Rodas
+
+Datasheet: https://www.baudaeletronica.com.br/Documentos/6V-210RPM.pdf
+Loja Bau da Eletronica: https://produto.mercadolivre.com.br/MLB-784263575-motor-dc-6v-210rpm-com-encoder-e-adaptador-_JM?quantity=1
+
+
+
+Driver Ponte H L298N:
+
+Datasheet:
+Eletrogate: https://www.eletrogate.com/ponte-h-dupla-l298n
+
+
+
+MPU6050
+
+Datasheet:
+Eletrogate: https://www.eletrogate.com/acelerometro-e-giroscopio-3-eixos-6-dof-mpu-6050-gy-521
+
+
+
+
+
+
+
+%% JUSTIFICATIVA DO SUBSISTEMA DAS MATRIZES
+
+Como no primeiro momento não está preocupado com a posição linear do pêndulo, é possível realizar um subsistema das matrizes A,B e C. Dessa forma, esse novo sistema
+não perderá rank quando for testado a observabilidade, já que não há mais o estado x. O novo subsistema é visto abaixo:
+
+A = 3x3    B = 3x1   C = 1x3   variáveis = xdot, theta, thetadot
+
+
+
+
+
+
+
+%% Filtro de Kalman
+
+xdot = Ax + Bu + V_d * d + 0*n
+y    = Cx + Du + 0*d + V_n * n
+
+
+% Taxa de amostragem
+
+ = 15 ms para uma folga (Sensor = 10ms máx e 1ms para processar o código)
