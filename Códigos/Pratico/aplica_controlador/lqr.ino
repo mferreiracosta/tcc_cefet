@@ -1,5 +1,6 @@
 
-double K[] = {3.2535, 1.1798};
+double K[] = {40.2535, 50.1798};
+//K[] = {3.2535, 1.1798};
 double voltage = 0;
 double output = 0;
 
